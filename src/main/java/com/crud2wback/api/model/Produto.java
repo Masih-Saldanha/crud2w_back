@@ -2,7 +2,7 @@ package com.crud2wback.api.model;
 
 import java.util.Date;
 
-import com.crud2wback.api.dto.HolidayDTO;
+import com.crud2wback.api.dto.ProdutoDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,19 +15,27 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-public class Holiday {
-  public Holiday(HolidayDTO data) {
-    this.name = data.name();
-    this.date = data.date();
+public class Produto {
+  public Produto(ProdutoDTO data) {
+    this.nome = data.nome();
+    this.tipo = data.tipo();
+    this.descricao = data.descricao();
+    this.dataInclusao = new Date();
   }
   
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(nullable = false)
-  private String name;
+  @Column(length = 50, nullable = false)
+  private String nome;
 
   @Column(nullable = false)
-  private Date date;
+  private TipoProduto tipo;
+
+  @Column(length = 140, nullable = false)
+  private String descricao;
+
+  @Column(nullable = false)
+  private Date dataInclusao;
 }
