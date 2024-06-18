@@ -3,6 +3,7 @@ package com.crud2wback.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,13 +27,13 @@ public class ProdutoController {
   private ProdutoService produtoService;
 
   @PostMapping
-  public Produto create(@RequestBody @Valid ProdutoDTO req) {
+  public ResponseEntity<Produto> create(@RequestBody @Valid ProdutoDTO req) {
     return produtoService.create(req);
   }
   
   @GetMapping
-  public List<Produto> readAll() {
-      return produtoService.readAll();
+  public ResponseEntity<List<Produto>> readAll() {
+    return produtoService.readAll();
   }
   
   @PutMapping("/{id}")

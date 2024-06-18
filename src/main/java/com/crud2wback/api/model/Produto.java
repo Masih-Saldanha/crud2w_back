@@ -6,9 +6,13 @@ import com.crud2wback.api.dto.ProdutoDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,11 +35,13 @@ public class Produto {
   private String nome;
 
   @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
   private TipoProduto tipo;
 
   @Column(length = 140, nullable = false)
   private String descricao;
 
   @Column(nullable = false)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date dataInclusao;
 }
